@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <title>File Share Files 3000</title>
+    </head>
+
+    <body>
+        <h1>Download Me</h1>
+        <div class="list">
+            {% for file in files %}
+            <li><a class=file href="{{ url_for('download', filename=file) }}">{{ file }}</a></li>
+            {% endfor %}
+        </div>
+        <div class="gohome">
+            <ul>
+                <li><a href="{{ url_for('upload') }}">Uploads</a></li>
+                <li><a href="{{ url_for('landing') }}">Go Back</a></li>
+                <li><a href="{{ url_for('index') }}">Logout</a></li>
+            </ul>
+        </div>
+    </body>
+</html>

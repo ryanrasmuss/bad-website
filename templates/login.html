@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <title>File Share Login 3000</title>
+    </head>
+
+    <body>
+        <div class="flasher">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        </div>
+
+        <h1><a href="{{ url_for('index') }}">Sign In</a></h1>
+
+        <div class=box>
+
+            <form class="log", method="post">
+                <dl>
+                    <dt>Username: <input type=text size=24 name=username>
+                    <dt>Password: <input type=password size=24 name=password>
+                    <dt><input type=submit value=login> or <a href="{{ url_for('register') }}">REGISTER</a>
+                </dl>
+            </form>
+
+        </div>
+
+
+    </body>
+
+</html>

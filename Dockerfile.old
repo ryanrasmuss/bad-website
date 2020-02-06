@@ -1,0 +1,51 @@
+# mysite
+# ======
+#
+# Dockerfile for my website
+#
+# Requires ~ 512 mb disk
+#
+# Build via
+# docker build -t mysite .
+#
+# Run via
+# docker run -d -p 80:5000 -v $(``pwd``)/files/:/mysite/files/ mysite:latest
+# docker run -ti -p 80:5000 -v $(``pwd``)/:/mysite/ -v $(``pwd``)/files/:/mysite/files/ mysite:latest
+#
+
+# Base image debian
+FROM debian:latest
+
+# Label base
+LABEL mysite latest
+
+VOLUME ["/mnt"]
+
+RUN apt-get update && apt-get install -y \
+    sqlite3 \
+    python3 \
+    python3-pip && \
+    pip3 install flask bcrypt flask-login && \
+    apt-get autoremove --purge -y && \
+    apt-get clean
+
+WORKDIR /mysite
+ENV HOME /mysite
+#VOLUME ["/mysite/files"]
+
+EXPOSE 5000
+
+# XX: Non-Dev Mode Uncomment Below
+COPY . .
+
+# XXX: Dev Mode Uncomment Below
+#COPY schema.sql .
+
+#RUN sqlite3 login.db < schema.sql
+
+RUN ./install.sh
+
+# XX: Non-Dev Mode Uncomment Below & Run as: docker run -d -p 80:5000 -v $(``pwd``)/files/:/mysite/files/ mysite:latest
+CMD ["python3", "mysite.py"]
+# XXX: Dev Mode Uncomment Below & Run as: docker run -ti -p 80:5000 -v $(``pwd``)/:/mysite/ -v $(``pwd``)/files/:/mysite/files/ mysite:latest
+#CMD ["/bin/bash"]

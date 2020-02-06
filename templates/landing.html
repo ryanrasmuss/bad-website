@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <title>File Share 3000</title>
+    </head>
+
+    <body>
+        <h1>Hello, friend</h1>
+        <p>It is not the load that breaks you, it's the way you carry it</p>
+        <div class="index options">
+            <a href="{{ url_for('upload') }}">Upload</a>
+            <a href="{{ url_for('files') }}">Downloads</a>
+            <a href="{{ url_for('index') }}">Logout</a>
+        </div>
+
+    </body>
+
+</html>
