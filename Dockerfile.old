@@ -14,7 +14,7 @@
 #
 
 # Base image debian
-FROM debian:latest
+FROM debian:11.5
 
 # Label base
 LABEL mysite latest
