@@ -14,7 +14,7 @@
 #
 
 # Base image debian
-FROM debian:latest
+FROM debian:bullseye
 
 # Label base
 LABEL mysite latest
